@@ -2,16 +2,14 @@ class HospitalsController < ApplicationController
   # GET /hospitals or /hospitals.json
   def index
    @hospitals = if params[:q].present?
-        query = "%#{params[:q]}%"
+      query = "%#{params[:q]}%"
         @hospitals = HospitalDirectory.where(
             "hospital_name LIKE :query",
             query: query
         )
-   else
-      default_scope
-   end
-
-    @hospitals = @hospitals.page(params[:page]).per(20)
+     else
+       default_scope
+     end.page(params[:page]).per(20)
   end
 
 
