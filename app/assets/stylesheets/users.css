@@ -1,0 +1,70 @@
+/* Styles for users index table */
+.users-index {
+  max-width: 960px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.05);
+}
+
+.users-table th,
+.users-table td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.users-table thead th {
+  background: #f8fafc;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.users-table tbody tr:hover {
+  background: #fbfeff;
+}
+
+.user-fullname a {
+  color: #0b5fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.users-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: #e6eefc;
+  color: #0b3c9b;
+  text-decoration: none;
+}
+
+.btn.primary {
+  background: #0b5fff;
+  color: white;
+}
+
+.btn.btn-danger {
+  background: #ffebe8;
+  color: #a33a2a;
+}
+
+@media (max-width: 600px) {
+  .users-table thead { display: none; }
+  .users-table, .users-table tbody, .users-table tr, .users-table td { display: block; width: 100%; }
+  .users-table tr { margin-bottom: 0.75rem; }
+  .users-table td { text-align: right; padding-left: 50%; position: relative; }
+  .users-table td::before { content: attr(data-label); position: absolute; left: 1rem; width: calc(50% - 1rem); text-align: left; font-weight: 600; }
+}

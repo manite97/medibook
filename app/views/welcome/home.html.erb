@@ -1,0 +1,33 @@
+
+<% content_for :title, "Welcome to MedBook" %>
+
+<div class="welcome-container">
+  <header class="welcome-header">
+    <h1>Welcome to MedBook</h1>
+    <p class="tagline">Your Trusted Medical Companion</p>
+  </header>
+
+  <section class="features">
+    <a href="/medical-records" class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h2>Medical Records</h2>
+        <p>Securely store and access your medical history anytime, anywhere.</p>
+    </a>
+
+    <a href="/hospitals" class="feature-card">
+        <div class="feature-icon">🏥</div>
+        <h2>Find Hospitals</h2>
+        <p>Connect with healthcare Organizations in your area.</p>
+    </a>
+
+    <a href="/appointments" class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h2>Appointments</h2>
+        <p>Schedule and manage your medical appointments with ease.</p>
+    </a>
+  </section>
+
+  <section class="cta-section">
+    <%= link_to "Get Started", new_user_path, class: "cta-button" %>
+  </section>
+</div>

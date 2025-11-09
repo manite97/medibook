@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Med Book — Sign In" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "application", "registration", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="auth-layout">
+    <% if flash[:notice] %>
+      <div class="flash flash-notice" data-controller="flash">
+        <button type="button" class="flash-close" aria-label="Dismiss" data-action="click->flash#close">×</button>
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    
+    <% if flash[:alert] %>
+      <div class="flash flash-alert" data-controller="flash">
+        <button type="button" class="flash-close" aria-label="Dismiss" data-action="click->flash#close">×</button>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <nav class="main-nav">
+      <div class="nav-content">
+        <%= link_to "MedBook", root_path, class: "nav-logo" %>
+      </div>
+    </nav>
+
+    <main class="auth-container">
+      <%= yield %>
+    </main>
+  </body>
+</html>

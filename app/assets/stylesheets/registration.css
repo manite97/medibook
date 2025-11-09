@@ -1,0 +1,211 @@
+/* Registration page styles */
+.registration-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.registration-box {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+}
+
+.registration-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.registration-header h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.registration-header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+.registration-form {
+  margin-bottom: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* NOTE: Legacy `.input-with-icon` styles were removed in favour of Bootstrap
+   `input-group` components. If you still have older markup using
+   `.input-with-icon`, convert it to Bootstrap `input-group` or re-add rules
+   here. Removing those overrides prevents accidental global overrides of
+   `.form-control` and duplicate focus rings. */
+
+
+/* Rails wraps invalid fields with a .field_with_errors div which can break
+   Bootstrap's `.input-group` structure. Prefer `display: contents` where
+   supported so the input remains a direct child of `.input-group`. For
+   browsers that don't support `display: contents`, use a flex fallback that
+   preserves the input-group layout instead of forcing the input onto a new
+   line. */
+.field_with_errors {
+  display: contents;
+}
+
+@supports not (display: contents) {
+  /* For plain fields outside input-groups keep the wrapper full-width */
+  .field_with_errors:not(.input-group > .field_with_errors) {
+    display: inline-block;
+    width: 100%;
+  }
+
+  /* For inputs inside .input-group, keep the flex row intact so the
+     .input-group-text and the input stay side-by-side. */
+  .input-group > .field_with_errors {
+    display: flex;
+    flex: 1 1 auto;
+    min-width: 0; /* allow flex children to shrink */
+    margin: 0;
+  }
+
+  .input-group > .field_with_errors .form-control {
+    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
+/* Ensure inputs wrapped by field_with_errors keep the intended sizing */
+.field_with_errors .form-control {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Make the input match the container so only the container shows a focus ring. */
+.input-with-icon .form-control {
+  border-radius: inherit;
+  height: 100%;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Extra defensive override in case UA/browsers still paint an inner ring */
+.input-with-icon .form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.error-messages {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #fff5f5;
+  border: 2px solid #fed7d7;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.error-icon {
+  background: #fc8181;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.error-content h2 {
+  color: #c53030;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-content ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #c53030;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 1rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background: #2980b9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.1);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.registration-footer {
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 0.95rem;
+}
+
+.login-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.login-link:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .registration-box {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .registration-header h1 {
+    font-size: 2rem;
+  }
+}

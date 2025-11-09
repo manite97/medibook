@@ -1,0 +1,41 @@
+<div class="container my-4">
+  <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
+    <h1 class="h4 mb-2">List of Hospitals</h1>
+
+    <%= form_with url: hospitals_path, method: :get, local: true, class: "d-flex" do %>
+      <%= text_field_tag :q, params[:q], placeholder: "Search hospitals...", class: "form-control me-2" %>
+      <%= submit_tag "Search", class: "btn btn-primary me-2" %>
+
+      <% if params[:q].present? %>
+        <%= link_to "Clear", hospitals_path, class: "btn btn-outline-secondary" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @hospitals.empty? %>
+    <div class="alert alert-info">No hospitals found.</div>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Hospital Name</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @hospitals.each do |hospital| %>
+            <tr>
+              <td><%= hospital.hospital_name %></td>
+              <td><%= hospital.location %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="d-flex justify-content-center mt-4">
+      <%= paginate @hospitals %>
+    </div>
+  <% end %>
+</div>
