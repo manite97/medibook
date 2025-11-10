@@ -1,0 +1,53 @@
+<div class="dcr-show-page" style="max-width: 900px; margin: 2rem auto; padding: 1rem; font-family: sans-serif;">
+
+  <!-- Page Header -->
+  <div class="header" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+    <h1 style="font-size: 2rem; font-weight: bold; color: #333; margin-bottom: 0.5rem;">Daily Collect Report</h1>
+    
+    <div class="actions" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+        <%= link_to "Edit", edit_daily_collect_report_path(@dcr), class: "button edit-button", style: "padding: 0.5rem 1rem; background-color: #4F46E5; color: white; border-radius: 0.3rem; text-decoration: none;" %>
+        <%= link_to "Back", daily_collect_reports_path, class: "button back-button", style: "padding: 0.5rem 1rem; background-color: #6B7280; color: white; border-radius: 0.3rem; text-decoration: none;" %>
+    </div>
+  </div>
+
+  <!-- DCR Details Table -->
+  <div class="details" style="background-color: #F9FAFB; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <table style="width: 100%; border-collapse: collapse;">
+      <tbody>
+        <tr style="border-bottom: 1px solid #E5E7EB;">
+          <th style="text-align: left; padding: 0.75rem; color: #374151;">Hospital Name</th>
+          <td style="padding: 0.75rem; color: #111827;"><%= @dcr.hospital_name %></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #E5E7EB;">
+          <th style="text-align: left; padding: 0.75rem; color: #374151;">Doctor Name</th>
+          <td style="padding: 0.75rem; color: #111827;"><%= @dcr.doctor_name %></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #E5E7EB;">
+          <th style="text-align: left; padding: 0.75rem; color: #374151;">Sample Product Name</th>
+          <td style="padding: 0.75rem; color: #111827;"><%= @dcr.sample_product_name %></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #E5E7EB;">
+          <th style="text-align: left; padding: 0.75rem; color: #374151;">Sample Product Quantity</th>
+          <td style="padding: 0.75rem; color: #111827;"><%= @dcr.sample_product_quantity %></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #E5E7EB;">
+          <th style="text-align: left; padding: 0.75rem; color: #374151;">Quantity Distributed</th>
+          <td style="padding: 0.75rem; color: #111827;"><%= @dcr.billing_order_quantity %></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #E5E7EB;">
+          <th style="text-align: left; padding: 0.75rem; color: #374151;">Report Date</th>
+          <td style="padding: 0.75rem; color: #111827;"><%= @dcr.report_date.strftime("%d %b %Y") %></td>
+        </tr>
+        <tr>
+          <th style="text-align: left; padding: 0.75rem; color: #374151;">Created By</th>
+          <td style="padding: 0.75rem; color: #111827;"><%= @dcr.user.full_name if @dcr.user %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Optional Footer / Actions -->
+  <div class="extra-actions" style="margin-top: 2rem; display: flex; gap: 1rem;">
+    <%= link_to "Delete", daily_collect_report_path(@dcr), method: :delete, data: { confirm: "Are you sure?" }, class: "button delete-button", style: "padding: 0.5rem 1rem; background-color: #EF4444; color: white; border-radius: 0.3rem; text-decoration: none;" %>
+  </div>
+</div>

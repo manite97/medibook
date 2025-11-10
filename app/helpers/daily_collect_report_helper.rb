@@ -1,0 +1,2 @@
+module DailyCollectReportHelper
+end

@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_11_07_121500) do
+ActiveRecord::Schema[7.2].define(version: 2025_11_10_132040) do
+  create_table "daily_collect_reports", charset: "utf8mb3", force: :cascade do |t|
+    t.string "hospital_name"
+    t.string "doctor_name", null: false
+    t.string "sample_product_name", null: false
+    t.integer "billing_order_quantity", null: false
+    t.date "report_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.string "doctor_department"
+    t.integer "sample_product_quantity"
+    t.index ["user_id"], name: "index_daily_collect_reports_on_user_id"
+  end
+
   create_table "hospital_directories", charset: "utf8mb3", force: :cascade do |t|
     t.string "sr_no"
     t.string "location_coordinates"
@@ -77,4 +91,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_07_121500) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["user_name"], name: "index_users_on_user_name"
   end
+
+  add_foreign_key "daily_collect_reports", "users"
 end

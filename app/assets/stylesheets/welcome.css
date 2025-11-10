@@ -1,3 +1,25 @@
+ html, body {
+        height: 100%;
+        margin: 0;
+      }
+
+      .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .page-content {
+        flex: 1;
+      }
+
+      footer {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        text-align: center;
+      }
+
+
 .welcome-container {
   max-width: 1200px;
   margin: 0 auto;

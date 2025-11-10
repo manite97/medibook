@@ -11,6 +11,9 @@ class User < ApplicationRecord
   validates :phone_number, presence: true, format: { with: VALID_INDIAN_MOBILE, message: "must be a valid 10-digit Indian mobile number" }
   validates :password, presence: true, length: { minimum: 6 }, on: :create
 
+  has_many :daily_collect_reports, dependent: :destroy
+  
+
   def full_name 
     [first_name, last_name].join(" ")
   end

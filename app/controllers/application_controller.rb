@@ -14,10 +14,17 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  def require_user
-    unless logged_in?
-      flash[:alert] = "You must be logged in to access this page"
-      redirect_to login_path
+  # def require_user
+  #   unless logged_in?
+  #     flash[:alert] = "You must be logged in to access this page"
+  #     redirect_to login_path
+  #   end
+  # end
+
+  def authenticate_user!
+    unless current_user
+      flash[:alert] = "Please log in first."
+      redirect_to login_path, status: :see_other
     end
   end
 end

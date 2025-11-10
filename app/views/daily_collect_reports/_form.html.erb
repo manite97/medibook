@@ -1,0 +1,52 @@
+<%= form_with(model: @dcr, class: "card shadow-sm p-4", html: { autocomplete: "off" }) do |f| %>
+  <% if @dcr.errors.any? %>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(@dcr.errors.count, "error") %> prohibited this report from being saved:</h5>
+      <ul class="mb-0">
+        <% @dcr.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :hospital_name, class: "form-label" %>
+    <%= f.text_field :hospital_name, class: "form-control", placeholder: "Enter hospital name" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :doctor_name, class: "form-label" %>
+    <%= f.text_field :doctor_name, class: "form-control", placeholder: "Enter doctor name", required: true %>
+  </div>
+  
+  <div class="mb-3">
+    <%= f.label :doctor_department, class: "form-label" %>
+    <%= f.text_field :doctor_department, class: "form-control", placeholder: "Enter dept name", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :sample_product_name, class: "form-label" %>
+    <%= f.text_field :sample_product_name, class: "form-control", placeholder: "Enter sample product name", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :sample_product_quantity, class: "form-label" %>
+    <%= f.text_field :sample_product_name, class: "form-control", placeholder: "Enter sample product quantity", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :billing_order_quantity, class: "form-label" %>
+    <%= f.number_field :billing_order_quantity, class: "form-control", min: 1, required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :report_date, class: "form-label" %>
+    <%= f.date_field :report_date, class: "form-control", required: true, value: Date.today %>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <%= link_to "Back", daily_collect_reports_path, class: "btn btn-outline-secondary" %>
+    <%= f.submit @dcr.new_record? ? "Create DCR" : "Update DCR", class: "btn btn-primary" %>
+  </div>
+<% end %>

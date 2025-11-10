@@ -1,0 +1,36 @@
+<% content_for :title, "Users" %>
+
+<div class="container my-4">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h1 class="h4 mb-0">Daily Collect Reports</h1>
+    <%= link_to "New DCR", new_daily_collect_report_path, class: "btn btn-primary" %>
+  </div>
+
+  <% if @dcrs.empty? %>
+    <div class="alert alert-info">No records found.</div>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Report Date</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @dcrs.each do |dcr| %>
+            <tr>
+              <td>
+                <%=  link_to dcr.report_date, daily_collect_report_path(dcr), class: "fw-medium text-decoration-none" %>
+              </td>
+              <td class="text-end">
+                <%= link_to "View", daily_collect_report_path(dcr), class: "btn btn-sm btn-outline-primary me-2" %>
+                <%= button_to "Delete", daily_collect_reports_path(dcr), method: :delete, form: { class: "d-inline" }, data: { confirm: "Are you sure you want to delete #{dcr.report_date}?" }, class: "btn btn-sm btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

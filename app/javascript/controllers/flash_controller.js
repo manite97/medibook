@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   connect() {
     // auto dismiss after 4s
-    this.dismissTimeout = setTimeout(() => this.close(), 8000)
+    this.dismissTimeout = setTimeout(() => this.close(), 3000)
   }
 
   close() {
@@ -12,7 +12,7 @@ export default class extends Controller {
     // remove element after transition
     setTimeout(() => {
       try { this.element.remove() } catch(e) {}
-    }, 5000)
+    }, 3000)
   }
 
   disconnect() {

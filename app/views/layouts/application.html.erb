@@ -32,22 +32,27 @@
       </div>
     <% end %>
 
-    <nav class="main-nav">
-      <div class="nav-content">
-        <%= link_to "MedBook", root_path, class: "nav-logo" %>
-        <div class="nav-links">
-          <% if logged_in? %>
-            <span class="welcome-user">Welcome, <%= current_user.first_name %></span>
-            <%= button_to "Log Out", logout_path, method: :delete, class: "nav-button" %>
-          <% else %>
-            <%= link_to "Login", login_path, class: "nav-button" %>
-            <%= link_to "Sign Up", new_user_path, class: "nav-button primary" %>
-          <% end %>
+    <div class="page-wrapper">
+      <nav class="main-nav">
+        <div class="nav-content">
+          <%= link_to "MedBook", root_path, class: "nav-logo" %>
+          <div class="nav-links">
+            <% if logged_in? %>
+              <span class="welcome-user">Welcome, <%= current_user.first_name %></span>
+              <%= button_to "Log Out", logout_path, method: :delete, class: "nav-button" %>
+            <% else %>
+              <%= link_to "Login", login_path, class: "nav-button" %>
+              <%= link_to "Sign Up", new_user_path, class: "nav-button primary" %>
+            <% end %>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
-    <%= yield %>
-    <%= render 'layouts/footer' %>
+      <main class="page-content">
+        <%= yield %>
+      </main>
+
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
